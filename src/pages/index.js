@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { Jumbo } from "../components"
 import { SEO } from "../components"
 import Products from "../components/Products"
@@ -28,6 +28,7 @@ export const query = graphql`
             name
           }
           unit_amount
+          id
         }
       }
     }
@@ -35,7 +36,6 @@ export const query = graphql`
 `
 
 const IndexPage = ({ data }) => {
-  console.log(data)
   return (
     <>
       <SEO title="Home" />

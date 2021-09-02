@@ -4,7 +4,6 @@ import formatprice from "../utils/priceFormat"
 import { StyledProducts } from "../styles/components"
 
 export default function Products({ products }) {
-  console.log(products)
   return (
     <>
       <StyledProducts>
