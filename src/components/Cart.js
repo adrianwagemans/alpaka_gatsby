@@ -7,18 +7,53 @@ import { CartContext } from "../context"
 const Cart = () => {
   const { cart } = useContext(CartContext)
   const [total, setTotal] = useState(0)
+  const [stripe, setStripe] = useState()
 
   const getTotal = () => {
     setTotal(
-      cart.reduce((acc, current) => acc + current.unit_amount * current.qty, 0)
+      cart.reduce(
+        (acc, current) => acc + current.unit_amount * current.quantity,
+        0
+      )
     )
   }
 
+  //   useEffect(() => {
+  //     getTotal()
+  //   }, [])
+
   useEffect(() => {
+    setStripe(window.Stripe(process.env.STRIPE_PK))
+
     getTotal()
   }, [])
 
-  console.log(total)
+  const handleBuy = async e => {
+    e.preventDefault()
+    console.log("ejecu")
+
+    const { error } = await stripe.redirectToCheckout({
+      // lineItems: cart.map(({ unit_amount, quantity }) => ({
+      //   price: unit_amount,
+      //   quantity: quantity,
+      // })),
+
+      lineItems: [{ price: "1515", quantity: 1 }],
+      mode: "payment",
+      successUrl: process.env.SUCCESS_REDIRECT,
+      cancelUrl: process.env.CANCEL_REDIRECT,
+    })
+
+    if (error) {
+      console.log("error")
+      throw error
+    }
+  }
+  const log = () => {
+    console.log("button clicked")
+    console.log(stripe)
+  }
+
   return (
     <StyledCart>
       <h2>Cart</h2>
@@ -36,8 +71,8 @@ const Cart = () => {
                 <img src={swag.images} alt={swag.name} /> {swag.name}
               </td>
               <td>USD {priceFormat(swag.unit_amount)}</td>
-              <td>{swag.qty}</td>
-              <td>{priceFormat(swag.qty * swag.unit_amount)}</td>
+              <td>{swag.quantity}</td>
+              <td>{priceFormat(swag.quantity * swag.unit_amount)}</td>
             </tr>
           ))}
         </tbody>
@@ -51,7 +86,13 @@ const Cart = () => {
           <Link to="/">
             <Button type="outline">Volver</Button>
           </Link>
-          <Button>Comprar</Button>
+          <Button
+            onClick={() => handleBuy()}
+            onClick={() => log()}
+            disabled={cart.length === 0}
+          >
+            Comprar
+          </Button>
         </div>
       </nav>
     </StyledCart>

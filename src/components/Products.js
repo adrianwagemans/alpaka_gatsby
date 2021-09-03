@@ -10,12 +10,14 @@ export default function Products({ products }) {
         <h2>Productos</h2>
         <section>
           {products.map(({ node }) => {
-            const price = formatprice(node.unit_amount)
+            const productPrice = formatprice(node.price)
+            console.log(node.price)
+
             return (
               <article key={node.id}>
                 <img src={node.product.images} alt={node.product.name} />
                 <p>{node.product.name}</p>
-                <small>USD {price}</small>
+                <small>USD {productPrice}</small>
                 <Link to={`/${node.id}`}>Comprar ahora</Link>
               </article>
             )

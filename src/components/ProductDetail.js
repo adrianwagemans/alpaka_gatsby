@@ -20,14 +20,21 @@ const ProductDetail = ({
   product: { name, metadata, images, description },
 }) => {
   const formatedPrice = priceFormat(unit_amount)
-  console.log(metadata.wear)
+
   const [size, setSize] = useState(2)
   const [qty, setQty] = useState(1)
 
   const { addToCart } = useContext(CartContext)
 
   const handleSubmit = () => {
-    addToCart({ name, id, unit_amount, description, qty, images })
+    addToCart({
+      name,
+      id,
+      unit_amount,
+      description,
+      quantity: qty,
+      images,
+    })
   }
   return (
     <StyledProductDetail>

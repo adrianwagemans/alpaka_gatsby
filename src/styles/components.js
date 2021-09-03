@@ -5,8 +5,8 @@ export const colors = {
   green: "#98ca3f",
   orange: "#f8b71c",
   gray: "#969696",
-  darkBlue: "#1c3643",
-  lightBlue: "#1e5372",
+  darkBlue: "#00A19D",
+  lightBlue: "#FFB344",
   softGray: "#f6f8f9",
 }
 
@@ -85,6 +85,7 @@ export const StyledJumbo = styled.div`
   };
   & img{
     width: 35vw;
+    border-radius: 150px 50px;
   };
   ${above.medium`
     padding: 2rem 4rem;
@@ -215,8 +216,8 @@ export const StyledProductDetail = styled.div`
   text-align: justify;
   height: 82vh;
   img {
-    width: 100%;
-    object-fit: cover;
+    width: 40%;
+    object-fit: contain;
     object-position: center;
     margin: 0;
   }

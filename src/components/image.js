@@ -4,7 +4,8 @@ import { StaticImage } from "gatsby-plugin-image"
 const Image = () => {
   return (
     <StaticImage
-      src="../images/icon.png"
+      className="imageJumbo"
+      src="../images/AdobeStock_100020881-730x487.jpeg"
       alt="icon"
       placeholder="blurred"
       layout="constrained"

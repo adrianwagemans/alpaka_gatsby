@@ -27,7 +27,7 @@ export const query = graphql`
             }
             name
           }
-          unit_amount
+          price: unit_amount
           id
         }
       }
