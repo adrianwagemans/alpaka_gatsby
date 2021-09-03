@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 import {
   Tag,
@@ -10,23 +10,36 @@ import {
   QtySelect,
 } from "../styles/components"
 
-import { SEO } from "."
+import { SEO, Stars } from "."
 import priceFormat from "../utils/priceFormat"
+import { CartContext } from "../context"
 
-const ProductDetail = props => {
-  const formatedPrice = priceFormat(props.unit_amount)
-  console.log(props.product.metadata.wear)
+const ProductDetail = ({
+  unit_amount,
+  id,
+  product: { name, metadata, images, description },
+}) => {
+  const formatedPrice = priceFormat(unit_amount)
+  console.log(metadata.wear)
   const [size, setSize] = useState(2)
   const [qty, setQty] = useState(1)
+
+  const { addToCart } = useContext(CartContext)
+
+  const handleSubmit = () => {
+    addToCart({ name, id, unit_amount, description, qty, images })
+  }
   return (
     <StyledProductDetail>
-      <SEO title={props.product.name} />
-      <img src={props.product.images} alt={props.product.name} />
+      <SEO title={name} />
+      <img src={images} alt={name} />
       <div>
         <Tag>Popular</Tag>
-        <h2>{props.product.name}</h2>
+        <h2>{name}</h2>
         <b>{formatedPrice}</b>
-        {props.product.metadata.wear && (
+        <Stars />
+        <small>{description}</small>
+        {metadata.wear && (
           <SizeSelect selected={size}>
             <SizeButton onClick={() => setSize(1)}>XS</SizeButton>
             <SizeButton onClick={() => setSize(2)}>S</SizeButton>
@@ -40,6 +53,7 @@ const ProductDetail = props => {
           <input type="text" disabled value={qty} />
           <button onClick={() => setQty(qty + 1)}>+</button>
         </QtySelect>
+        <Button onClick={handleSubmit}>Agregar al carrito</Button>
       </div>
     </StyledProductDetail>
   )
