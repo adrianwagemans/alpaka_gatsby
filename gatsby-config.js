@@ -4,7 +4,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
-    description: `lalala tu tu ritubi.`,
+    description: `Exclusive alpaka clothes.`,
     author: `@gatsbyjs`,
   },
   plugins: [

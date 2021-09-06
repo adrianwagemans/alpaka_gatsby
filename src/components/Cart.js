@@ -18,10 +18,6 @@ const Cart = () => {
     )
   }
 
-  //   useEffect(() => {
-  //     getTotal()
-  //   }, [])
-
   useEffect(() => {
     setStripe(window.Stripe(process.env.STRIPE_PK))
 
@@ -30,7 +26,7 @@ const Cart = () => {
 
   const handleBuy = async e => {
     e.preventDefault()
-    console.log("ejecu")
+    console.log("eject")
 
     const { error } = await stripe.redirectToCheckout({
       // lineItems: cart.map(({ unit_amount, quantity }) => ({
@@ -80,7 +76,7 @@ const Cart = () => {
       <nav>
         <div>
           <h3>Subtotal: </h3>
-          <small>USD {priceFormat(total)}</small>
+          <small>EUR {priceFormat(total)}</small>
         </div>
         <div>
           <Link to="/">

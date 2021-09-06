@@ -6,7 +6,7 @@ const Jumbo = ({ description }) => {
   return (
     <StyledJumbo>
       <div>
-        <h2>Consigue el mejor swag exclusivo de adrancito.com</h2>
+        <h2>Alpaca Dandy</h2>
         <small>{description}</small>
       </div>
       <Image />

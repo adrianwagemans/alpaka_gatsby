@@ -7,18 +7,17 @@ export default function Products({ products }) {
   return (
     <>
       <StyledProducts>
-        <h2>Productos</h2>
+        <h2>Products</h2>
         <section>
           {products.map(({ node }) => {
             const productPrice = formatprice(node.price)
-            console.log(node.price)
 
             return (
               <article key={node.id}>
                 <img src={node.product.images} alt={node.product.name} />
                 <p>{node.product.name}</p>
-                <small>USD {productPrice}</small>
-                <Link to={`/${node.id}`}>Comprar ahora</Link>
+                <small>EUR {productPrice}</small>
+                <Link to={`/${node.id}`}>Buy now</Link>
               </article>
             )
           })}

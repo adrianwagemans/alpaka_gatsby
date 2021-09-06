@@ -213,10 +213,14 @@ export const StyledProductDetail = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  text-align: justify;
-  height: 82vh;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  min-width: 30%;
+
   img {
-    width: 40%;
+    width: 50%;
     object-fit: contain;
     object-position: center;
     margin: 0;
@@ -253,14 +257,17 @@ export const StyledProductDetail = styled.div`
   ${above.medium`
     padding: 1rem 3rem;
     flex-direction: column;
+    
     img{
       margin-right: 2rem;
+      width: 350px;
     }
     `}
   ${above.large`
     flex-direction: row;
     height: 82vh;
     padding: 2rem 10rem;
+    
   `}
 `
 
@@ -377,6 +384,8 @@ export const QtyButton = styled.button`
 export const QtySelect = styled.div`
   display: flex;
   margin: 0.6rem 0;
+  justify-content: center;
+
   button {
     padding: 0 10px;
     background-color: transparent;

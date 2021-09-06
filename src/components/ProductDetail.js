@@ -40,8 +40,8 @@ const ProductDetail = ({
     <StyledProductDetail>
       <SEO title={name} />
       <img src={images} alt={name} />
-      <div>
-        <Tag>Popular</Tag>
+      <div className="product-detail">
+        <Tag>100% Alpaka</Tag>
         <h2>{name}</h2>
         <b>{formatedPrice}</b>
         <Stars />
@@ -60,7 +60,7 @@ const ProductDetail = ({
           <input type="text" disabled value={qty} />
           <button onClick={() => setQty(qty + 1)}>+</button>
         </QtySelect>
-        <Button onClick={handleSubmit}>Agregar al carrito</Button>
+        <Button onClick={handleSubmit}>Add to cart</Button>
       </div>
     </StyledProductDetail>
   )
